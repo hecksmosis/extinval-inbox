@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "extinval-inbox"
+version = "0.1.0"
+description = "Desktop inbox watcher for extracting product requests into Extinval quote spreadsheets"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{ name = "OpenAI Codex" }]
+dependencies = [
+  "customtkinter>=5.2.2",
+  "openpyxl>=3.1.5",
+  "pandas>=2.2.3",
+  "pydantic>=2.11.3",
+  "pydantic-settings>=2.8.1",
+  "python-dotenv>=1.1.0",
+  "httpx>=0.28.1",
+  "tenacity>=9.0.0",
+  "llama-index-core>=0.12.30",
+  "llama-parse>=0.6.18",
+  "pillow>=11.1.0",
+  "xlsxwriter>=3.2.2"
+]
+
+[project.optional-dependencies]
+ocr = [
+  "pytesseract>=0.3.13",
+  "pdf2image>=1.17.0"
+]
+dev = [
+  "pytest>=8.3.5",
+  "pytest-mock>=3.14.0"
+]
+
+[tool.setuptools.packages.find]
+include = ["app*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
